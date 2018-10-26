@@ -1,2 +1,2 @@
-# eventline
-Trying to drink from the firehose
+# About
+Project that tries to keep track of events and todos
