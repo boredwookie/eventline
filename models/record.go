@@ -30,7 +30,8 @@ type Record struct {
 	Tags               null.String `boil:"Tags" json:"Tags,omitempty" toml:"Tags" yaml:"Tags,omitempty"`
 	SourceType         null.String `boil:"SourceType" json:"SourceType,omitempty" toml:"SourceType" yaml:"SourceType,omitempty"`
 	SourceUserIdentity null.String `boil:"SourceUserIdentity" json:"SourceUserIdentity,omitempty" toml:"SourceUserIdentity" yaml:"SourceUserIdentity,omitempty"`
-	SourceRecordId     null.String `boil:"SourceRecordId" json:"SourceRecordId,omitempty" toml:"SourceRecordId" yaml:"SourceRecordId,omitempty"`
+	SourceRecordId     string      `boil:"SourceRecordId" json:"SourceRecordId" toml:"SourceRecordId" yaml:"SourceRecordId"`
+	SourceRaw          null.String `boil:"SourceRaw" json:"SourceRaw,omitempty" toml:"SourceRaw" yaml:"SourceRaw,omitempty"`
 	DateAdded          null.String `boil:"DateAdded" json:"DateAdded,omitempty" toml:"DateAdded" yaml:"DateAdded,omitempty"`
 	DateLastModified   null.String `boil:"DateLastModified" json:"DateLastModified,omitempty" toml:"DateLastModified" yaml:"DateLastModified,omitempty"`
 
@@ -48,6 +49,7 @@ var RecordColumns = struct {
 	SourceType         string
 	SourceUserIdentity string
 	SourceRecordId     string
+	SourceRaw          string
 	DateAdded          string
 	DateLastModified   string
 }{
@@ -60,6 +62,7 @@ var RecordColumns = struct {
 	SourceType:         "SourceType",
 	SourceUserIdentity: "SourceUserIdentity",
 	SourceRecordId:     "SourceRecordId",
+	SourceRaw:          "SourceRaw",
 	DateAdded:          "DateAdded",
 	DateLastModified:   "DateLastModified",
 }
@@ -81,9 +84,9 @@ func (*recordR) NewStruct() *recordR {
 type recordL struct{}
 
 var (
-	recordColumns               = []string{"Id", "Identity", "Subject", "Notes", "Actions", "Tags", "SourceType", "SourceUserIdentity", "SourceRecordId", "DateAdded", "DateLastModified"}
+	recordColumns               = []string{"Id", "Identity", "Subject", "Notes", "Actions", "Tags", "SourceType", "SourceUserIdentity", "SourceRecordId", "SourceRaw", "DateAdded", "DateLastModified"}
 	recordColumnsWithoutDefault = []string{}
-	recordColumnsWithDefault    = []string{"Id", "Identity", "Subject", "Notes", "Actions", "Tags", "SourceType", "SourceUserIdentity", "SourceRecordId", "DateAdded", "DateLastModified"}
+	recordColumnsWithDefault    = []string{"Id", "Identity", "Subject", "Notes", "Actions", "Tags", "SourceType", "SourceUserIdentity", "SourceRecordId", "SourceRaw", "DateAdded", "DateLastModified"}
 	recordPrimaryKeyColumns     = []string{"Id"}
 )
 
